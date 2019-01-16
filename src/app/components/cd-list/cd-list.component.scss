@@ -1,0 +1,11 @@
+@import "~ngx-smart-modal/ngx-smart-modal";
+// input
+.input-group{
+    .form-control{
+        border:none;
+    }
+    .input-group-text{
+        border: none;
+        background: #fff;
+    }
+}

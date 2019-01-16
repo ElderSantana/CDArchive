@@ -8,20 +8,32 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AddModalComponent } from './components/modal/add-modal/add-modal.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CdListComponent } from './components/cd-list/cd-list.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     PanelComponent,
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    AddModalComponent,
+    NavbarComponent,
+    CdListComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
     RouterModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    NgxSmartModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

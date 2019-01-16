@@ -1,0 +1,102 @@
+<table class="table table-hover">
+  <thead>
+      <tr>
+      <th style="width:10%" scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th   style="width:20%" scope="col">Genre</th>
+      <th scope="col">Release Date</th>
+      <th class="text-right" scope="col">Options</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+      <th>
+          <div class="input-group">
+          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <div class="input-group-append">
+              <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search"></i></span>
+          </div>
+          </div>
+      </th>
+      <th>
+          <div class="input-group">
+          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <div class="input-group-append">
+              <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search"></i></span>
+          </div>
+          </div>
+      </th>
+      <th>
+          <div class="input-group">
+          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <div class="input-group-append">
+              <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search"></i></span>
+          </div>
+          </div>
+      </th>
+      <th>
+          <div class="input-group">
+          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <div class="input-group-append">
+              <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa fa-search"></i></span>
+          </div>
+          </div>
+      </th>
+      <th>
+          <button (click)="add()" placement="top" ngbTooltip="Add a new CD" class="mb-3 pull-right btn btn-success"><i class="fa fa-plus"></i></button>
+      </th>
+      </tr>
+      <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td class="text-right">
+          <button type="button" ngbTooltip="View cover" class="mr-2 btn btn-info">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+          </button>
+          <button type="button" ngbTooltip="Edit this CD" class="mr-2 btn btn-primary ">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-warning ">
+              <i class="fa fa-trash"  ngbTooltip="Remove this CD" aria-hidden="true"></i>
+          </button>
+      </td>
+      </tr>
+      <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td class="text-right">
+          <button type="button" ngbTooltip="View cover" class="mr-2 btn btn-info">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="mr-2 btn btn-primary ">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-warning ">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+      </td>
+      </tr>
+      <tr>
+      <th scope="row">3</th>
+      <td>Larry the Bird</td>
+      <td>@fat</td>
+      <td>@twitter</td>
+      <td class="text-right">
+          <button type="button" ngbTooltip="View cover" class="mr-2 btn btn-info">
+              <i class="fa fa-eye" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="mr-2 btn btn-primary ">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-warning ">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+      </td>
+      </tr>
+  </tbody>
+</table>
+<app-add-modal></app-add-modal>

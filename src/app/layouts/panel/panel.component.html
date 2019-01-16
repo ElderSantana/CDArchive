@@ -1,45 +1,11 @@
 <div>
-  <div class="sidebar">
-    <a class="navbar-brand" href="#">CD-App</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fa fa-tachometer"></i> Dashboard
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">
-          <i class="fa fa-clock-o" aria-hidden="true"></i>
-            Coming soon...
-        </a>
-      </li>
-    </ul>
-  </div>
+  <app-sidebar></app-sidebar>
   <div class="main-panel">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="col-md-12">
-          <ul ngbDropdown class="pull-right nav">
-              <li class="nav-item">
-                <a id="dropdownBasic1" ngbDropdownToggle class="nav-link active" >
-                  <i class="fa fa-user-o" aria-hidden="true"></i>
-                  Elder Santos
-                </a>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button class="dropdown-item">Log off</button>
-                  </div>
-              </li>
-          </ul>
-          <!-- <div ngbDropdown class="pull-right">
-              <button class="btn btn-link" id="dropdownBasic1" ngbDropdownToggle>Hello User</button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button class="dropdown-item">Action - 1</button>
-                <button class="dropdown-item">Another Action</button>
-                <button class="dropdown-item">Something else is here</button>
-              </div>
-            </div> -->
-      </div>
-    </nav>
+    <app-navbar></app-navbar>
+    <div class="content">
+        <app-breadcrumb></app-breadcrumb>
+        <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
 
-<router-outlet></router-outlet>

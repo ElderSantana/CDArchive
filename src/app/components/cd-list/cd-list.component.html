@@ -1,11 +1,20 @@
-<table class="table table-hover">
+<div>
+    <button [disabled]="!genreList?.length" (click)="add()" placement="top" ngbTooltip="Add a new CD" class="ml-2 mb-3 pull-right btn btn-success">
+        <i class="fa fa-music"></i>
+    </button>
+    <button (click)="addGenre()" placement="top" ngbTooltip="Add a new Genre" class="mb-3 pull-right btn btn-success">
+        <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+    </button>
+</div>
+<mat-progress-bar *ngIf="loading" [color]="'warn'" mode="indeterminate"></mat-progress-bar>
+<table *ngIf="cdList?.length" class="table table-hover">
   <thead>
       <tr>
-      <th style="width:10%" scope="col">ID</th>
       <th scope="col">Name</th>
-      <th   style="width:20%" scope="col">Genre</th>
+      <th style="width:25%" scope="col">Description</th>
+      <th style="width:20%" scope="col">Genre</th>
       <th scope="col">Release Date</th>
-      <th class="text-right" scope="col">Options</th>
+      <th style="width:20%" class="text-right" scope="col">Options</th>
       </tr>
   </thead>
   <tbody>
@@ -42,61 +51,25 @@
           </div>
           </div>
       </th>
-      <th>
-          <button (click)="add()" placement="top" ngbTooltip="Add a new CD" class="mb-3 pull-right btn btn-success"><i class="fa fa-plus"></i></button>
-      </th>
       </tr>
-      <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td class="text-right">
-          <button type="button" ngbTooltip="View cover" class="mr-2 btn btn-info">
-          <i class="fa fa-eye" aria-hidden="true"></i>
-          </button>
-          <button type="button" ngbTooltip="Edit this CD" class="mr-2 btn btn-primary ">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="btn btn-warning ">
-              <i class="fa fa-trash"  ngbTooltip="Remove this CD" aria-hidden="true"></i>
-          </button>
-      </td>
-      </tr>
-      <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td class="text-right">
-          <button type="button" ngbTooltip="View cover" class="mr-2 btn btn-info">
-          <i class="fa fa-eye" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="mr-2 btn btn-primary ">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="btn btn-warning ">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
-      </td>
-      </tr>
-      <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>@fat</td>
-      <td>@twitter</td>
-      <td class="text-right">
-          <button type="button" ngbTooltip="View cover" class="mr-2 btn btn-info">
-              <i class="fa fa-eye" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="mr-2 btn btn-primary ">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="btn btn-warning ">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
-      </td>
-      </tr>
+      <tr *ngFor="let item of cdList">
+      
+        <td>{{item.title}}</td>
+        <th scope="row"><small>{{item.description}}</small></th>
+        <td>{{item.idGenre}}</td>
+        <td>{{item.release | date}}</td>
+        <td class="text-right">
+            <button type="button" ngbTooltip="View cover" class="mr-2 btn btn-info">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+            </button>
+            <button type="button" ngbTooltip="Edit this CD" class="mr-2 btn btn-primary ">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-warning ">
+                <i class="fa fa-trash"  ngbTooltip="Remove this CD" aria-hidden="true"></i>
+            </button>
+        </td>
   </tbody>
 </table>
-<app-add-modal></app-add-modal>
+<app-add-modal [genreList]="genreList" (update)="update()"></app-add-modal>
+<app-add-genre-modal (update)="update()"></app-add-genre-modal>

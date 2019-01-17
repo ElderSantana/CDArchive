@@ -1,0 +1,30 @@
+<ngx-smart-modal #addGenre identifier="addGenre"
+  customClass="nsm-dialog nsm-dialog-animation-ltr medium-modal nsm-dialog-open msg-modal ">
+  <form [formGroup]="registerForm" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-12 text-center mt-3" >
+          <p class="lead">Add a new CD</p>
+      </div>
+      <div class="col-md-12">
+          <div class="form-group">
+            <label for="basic-url">Name</label>
+          <input formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title?.errors }" class="form-control" type="text" placeholder="Name">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <div *ngIf="submitted && !registerForm.valid" class="text-danger">
+            Please fill all fields correctly :)
+          </div>
+          <button type="submit"  [disabled]="loading" class="btn btn-success pull-right">
+            <span  *ngIf="!loading">
+              Save
+            </span>
+            <mat-spinner *ngIf="loading" [color]="'#fff'" [diameter]="20"></mat-spinner>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  </form>
+  </ngx-smart-modal>

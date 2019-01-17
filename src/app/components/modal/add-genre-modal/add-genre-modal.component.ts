@@ -5,13 +5,12 @@ import {NgbDateAdapter, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-add-modal',
-  templateUrl: './add-modal.component.html',
-  styleUrls: ['./add-modal.component.scss'],
+  selector: 'app-add-genre-modal',
+  templateUrl: './add-genre-modal.component.html',
+  styleUrls: ['./add-genre-modal.component.scss'],
   providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter} , DatePipe]
 })
-export class AddModalComponent implements OnInit {
-  @Input() genreList;
+export class AddGenreModalComponent implements OnInit {
   @Output() update  = new EventEmitter<any>();
   public registerForm: FormGroup;
   public submitted = false;
@@ -27,10 +26,6 @@ export class AddModalComponent implements OnInit {
     // start form values and validators
     this.registerForm = this.formBuilder.group({
       title: ['', Validators.required],
-      description: ['', Validators.required],
-      release: ['', Validators.required],
-      cover: [''],
-      idGenre: ['', [Validators.required]],
     });
 
   }
@@ -51,7 +46,7 @@ export class AddModalComponent implements OnInit {
     this.registerForm.value.release = dateFormated;
     
     //call the service for add method
-    this.cdService.addCd(this.registerForm.value).subscribe(
+    this.cdService.addGenre(this.registerForm.value).subscribe(
       result =>{
         this.loading = false;
         this.submitted = false;

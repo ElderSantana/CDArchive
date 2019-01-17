@@ -13,6 +13,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CdListComponent } from './components/cd-list/cd-list.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { XHRBackend, ConnectionBackend} from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
+import { AddGenreModalComponent } from './components/modal/add-genre-modal/add-genre-modal.component';
+
+
+
 
 
 
@@ -25,17 +34,32 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     AddModalComponent,
     NavbarComponent,
     CdListComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    AddGenreModalComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
     RouterModule,
+    HttpClientModule,
     AngularFontAwesomeModule,
     NgxSmartModalModule.forRoot(),
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
+
   ],
-  providers: [],
+  exports: [
+    HttpClientModule
+  ],
+  providers: [
+    HttpClient,
+    {
+      provide: ConnectionBackend,
+      useClass: XHRBackend
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

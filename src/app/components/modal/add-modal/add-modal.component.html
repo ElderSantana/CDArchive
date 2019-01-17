@@ -1,13 +1,57 @@
 <ngx-smart-modal #add identifier="add"
-  customClass="nsm-dialog nsm-dialog-animation-ltr medium-modal nsm-dialog-open col-md-8 ">
-    <div class="jumbotron">
-      <h1 class="display-4">Hello, world!</h1>
-      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-      </p>
+  customClass="nsm-dialog nsm-dialog-animation-ltr medium-modal nsm-dialog-open msg-modal ">
+  <form [formGroup]="registerForm" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-12 text-center mt-3" >
+          <p class="lead">Add a new CD</p>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+            <label for="basic-url">Name</label>
+          <input formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title?.errors }" class="form-control" type="text" placeholder="Name">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="basic-url">Genre</label>
+          <select formControlName="idGenre" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.idGenre?.errors }">
+            <option disabled value="">Select</option>
+            <option *ngFor="let item of genreList" value="{{item.id}}">{{item.title}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-12">
+          <div class="form-group">
+            <label for="basic-url">Description</label>
+            <textarea formControlName="description" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.description?.errors }" name="" id="" cols="30" rows="3"></textarea>
+          </div>
+        </div>
+      <div class="col-md-6">
+        <div class="form-group">
+            <label for="basic-url">Release Date</label>
+          <input placement="top" (focus)="d.toggle()" ngbDatepicker #d="ngbDatepicker" class="form-control unstyled" formControlName="release" [ngClass]="{ 'is-invalid': submitted && f.release?.errors }" type="date" placeholder="Release Date">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="basic-url">Cover</label>
+          <input class="form-control" type="file" placeholder="">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <div *ngIf="submitted && !registerForm.valid" class="text-danger">
+            Please fill all fields correctly :)
+          </div>
+          <button type="submit"  [disabled]="loading" class="btn btn-success pull-right">
+            <span  *ngIf="!loading">
+              Save
+            </span>
+            <mat-spinner *ngIf="loading" [color]="'#fff'" [diameter]="20"></mat-spinner>
+          </button>
+        </div>
+      </div>
     </div>
-    <button class="btn btn-info" (click)="add.close()">Close</button>
+    
+  </form>
   </ngx-smart-modal>

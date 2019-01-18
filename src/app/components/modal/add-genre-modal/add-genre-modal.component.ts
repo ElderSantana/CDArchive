@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CDService } from 'src/app/services/cd.service';
 import {NgbDateAdapter, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
+import {MatSnackBar} from '@angular/material';
+import { NgxSmartModalService } from 'ngx-smart-modal';
+
 
 @Component({
   selector: 'app-add-genre-modal',
@@ -19,7 +22,9 @@ export class AddGenreModalComponent implements OnInit {
   constructor(
     private formBuilder : FormBuilder,
     private cdService : CDService,
-    private datePipe : DatePipe
+    private datePipe : DatePipe,
+    private snackbar : MatSnackBar,
+    private modalService : NgxSmartModalService
   ) { }
 
   ngOnInit() {
@@ -50,6 +55,10 @@ export class AddGenreModalComponent implements OnInit {
       result =>{
         this.loading = false;
         this.submitted = false;
+        this.modalService.getModal('addGenre').close();
+        this.snackbar.open('Genre successfully created', ':)', {
+          duration: 5000
+        });
         // send the notification to parent
         this.update.emit(true);
         
@@ -57,7 +66,9 @@ export class AddGenreModalComponent implements OnInit {
       error =>{
         this.loading = false;
         this.submitted = false;
-        alert('ERROR');
+        this.snackbar.open('Unexpected error', ':(', {
+          duration: 5000
+        });
       }
     )
     

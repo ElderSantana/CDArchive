@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import {  RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -19,8 +20,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { AddGenreModalComponent } from './components/modal/add-genre-modal/add-genre-modal.component';
-
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { FormsModule } from '@angular/forms';
+import { editModalComponent } from './components/modal/edit-modal/edit-modal.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -35,11 +39,15 @@ import { AddGenreModalComponent } from './components/modal/add-genre-modal/add-g
     NavbarComponent,
     CdListComponent,
     BreadcrumbComponent,
-    AddGenreModalComponent
+    AddGenreModalComponent,
+    DialogComponent,
+    editModalComponent
   ],
+  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     NgbModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
@@ -47,8 +55,11 @@ import { AddGenreModalComponent } from './components/modal/add-genre-modal/add-g
     NgxSmartModalModule.forRoot(),
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
-
+    MatProgressBarModule,
+    MatDialogModule,
+    FormsModule,
+    MatSnackBarModule
+    
   ],
   exports: [
     HttpClientModule

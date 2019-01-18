@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
+## Download Nodejs 
+
+[Download](https://nodejs.org/en/i) 
+
+## Install angular CLI
+
+npm install -g @angular/cli
+
+## Go to project folde 
+
+cd foder_name
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

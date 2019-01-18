@@ -39,7 +39,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="basic-url">Cover</label>
-          <input class="form-control" type="file" placeholder="">
+          <input class="form-control" (change)="handleFileSelect($event)" type="file" placeholder="">
         </div>
       </div>
       <div class="col-md-12">

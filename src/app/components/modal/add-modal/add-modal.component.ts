@@ -18,7 +18,7 @@ export class AddModalComponent implements OnInit {
   public registerForm: FormGroup;
   public submitted = false;
   public loading = false;
-
+  public base64textString;
   constructor(
     private formBuilder : FormBuilder,
     private cdService : CDService,
@@ -54,12 +54,16 @@ export class AddModalComponent implements OnInit {
     let dateFormated = this.datePipe.transform(this.registerForm.value.release , 'yyyy-MM-dd');
     this.registerForm.value.release = dateFormated;
     
+    // save the base64 image
+    this.registerForm.value.cover =  this.base64textString;
+
     //call the service for add method
     this.cdService.addCd(this.registerForm.value).subscribe(
       result =>{
         this.loading = false;
         this.submitted = false;
         this.modalService.getModal('add').close();
+        this.registerForm.reset();
         this.snackbar.open('CD successfully created', ':)', {
           duration: 5000
         });
@@ -75,6 +79,22 @@ export class AddModalComponent implements OnInit {
         });
       }
     )
-    
   }
+
+  handleFileSelect(evt){
+    var files = evt.target.files;
+    var file = files[0];
+
+    if (files && file) {
+      var reader = new FileReader();
+
+      reader.onload = this._handleReaderLoaded.bind(this);
+
+      reader.readAsBinaryString(file);
+    }
+  }
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);    
+   }
 }

@@ -1,4 +1,5 @@
 # CDApp
+A simple example of CD Archive  using Angular 7
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
@@ -12,7 +13,7 @@ npm install -g @angular/cli
 
 ## Go to project folde 
 
-cd foder_name
+cd foder_name ( the folder tha you have downloaded the project)
 
 ## Development server
 

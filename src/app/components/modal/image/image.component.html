@@ -1,0 +1,9 @@
+<ngx-smart-modal #image identifier="image"
+  customClass="nsm-dialog nsm-dialog-animation-ltr medium-modal nsm-dialog-open msg-modal ">
+  <div class="col-md-12 text-center mt-3" >
+      <p class="lead">Cover of {{image?.getData()?.title}}</p>
+   </div>
+  <div class="col-md-12">
+    <img class="img-thumbnail im-fluid" *ngIf="image.getData()" src="data:image/png;base64,{{image?.getData()?.cover}}" alt="Red dot" /> -->
+  </div>
+  </ngx-smart-modal>

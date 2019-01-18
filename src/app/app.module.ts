@@ -25,6 +25,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { FormsModule } from '@angular/forms';
 import { editModalComponent } from './components/modal/edit-modal/edit-modal.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ImageComponent } from './components/modal/image/image.component';
 
 
 
@@ -41,7 +42,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     BreadcrumbComponent,
     AddGenreModalComponent,
     DialogComponent,
-    editModalComponent
+    editModalComponent,
+    ImageComponent
   ],
   entryComponents: [DialogComponent],
   imports: [

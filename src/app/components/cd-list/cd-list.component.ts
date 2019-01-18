@@ -28,7 +28,8 @@ export class CdListComponent implements OnInit {
     private modalService : NgxSmartModalService,
     private cdService : CDService,
     public dialog: MatDialog,
-    private snackbar : MatSnackBar
+    private snackbar : MatSnackBar,
+    private datePipe : DatePipe
   ) { }
 
   ngOnInit() {
@@ -47,8 +48,16 @@ export class CdListComponent implements OnInit {
     this.modalService.getModal('add').open();
   }
   edit(cd){
+    // remove old data because of the ngxModal bug with dinamic data
+    this.modalService.getModal('edit').removeData();
     this.modalService.setModalData(cd ,'edit');
     this.modalService.getModal('edit').open();
+  }
+  showCover(cd){
+    // remove old data because of the ngxModal bug with dinamic data
+    this.modalService.getModal('image').removeData();
+    this.modalService.setModalData(cd ,'image');
+    this.modalService.getModal('image').open();
   }
   addGenre(){
     this.modalService.getModal('addGenre').open();
@@ -125,8 +134,10 @@ export class CdListComponent implements OnInit {
       break;
       case 'release':
         if(this.CD.release){
+           // format the release date
+          let dateFormated = this.datePipe.transform(this.CD.release , 'yyyy-MM-dd');
           this.cdList =  this.cdList.filter( 
-            item => item.release == this.CD.release
+            item => item.release == dateFormated 
           ); 
         }
       break;

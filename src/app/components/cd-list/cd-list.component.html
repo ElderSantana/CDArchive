@@ -45,7 +45,7 @@
       </th>
       <th>
         <div class="form-group">
-          <input [(ngModel)]="CD.release" (input)="filterHead('release')" placement="top" (focus)="d.toggle()" ngbDatepicker #d="ngbDatepicker" type="date" class="form-control unstyled" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input [(ngModel)]="CD.release" (ngModelChange)="filterHead('release')" placement="top" (focus)="d.toggle()" ngbDatepicker #d="ngbDatepicker" type="date" class="form-control unstyled" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
       </th>
       </tr>
@@ -56,7 +56,7 @@
         <td>{{item.idGenre}}</td>
         <td>{{item.release | date}}</td>
         <td class="text-right">
-            <button type="button" ngbTooltip="View cover" class="mr-2 btn btn-info">
+            <button (click)="showCover(item)" type="button" ngbTooltip="View cover" class="mr-2 btn btn-info">
             <i class="fa fa-eye" aria-hidden="true"></i>
             </button>
             <button (click)="edit(item)" type="button" ngbTooltip="Edit this CD" class="mr-2 btn btn-primary ">
@@ -71,3 +71,4 @@
 <app-add-modal [genreList]="genreList" (update)="update()"></app-add-modal>
 <app-edit-modal [genreList]="genreList" (update)="update()"></app-edit-modal>
 <app-add-genre-modal (update)="update()"></app-add-genre-modal>
+<app-image></app-image>

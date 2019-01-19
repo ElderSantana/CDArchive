@@ -48,6 +48,9 @@
           <input [(ngModel)]="CD.release" (ngModelChange)="filterHead('release')" placement="top" (focus)="d.toggle()" ngbDatepicker #d="ngbDatepicker" type="date" class="form-control unstyled" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
       </th>
+      <th>
+
+      </th>
       </tr>
       <tr *ngFor="let item of cdList">
       
@@ -56,13 +59,13 @@
         <td>{{item.idGenre}}</td>
         <td>{{item.release | date}}</td>
         <td class="text-right">
-            <button (click)="showCover(item)" type="button" ngbTooltip="View cover" class="mr-2 btn btn-info">
+            <button [disabled]="!item.cover" (click)="showCover(item)" type="button" ngbTooltip="View cover" class=" btn btn-info">
             <i class="fa fa-eye" aria-hidden="true"></i>
             </button>
-            <button (click)="edit(item)" type="button" ngbTooltip="Edit this CD" class="mr-2 btn btn-primary ">
+            <button (click)="edit(item)" type="button" ngbTooltip="Edit this CD" class="ml-2 btn btn-primary ">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
-            <button (click)="openDialog(item.id)" type="button" class="btn btn-warning ">
+            <button (click)="openDialog(item.id)" type="button" class="btn btn-warning ml-2 ">
                 <i class="fa fa-trash"  ngbTooltip="Remove this CD" aria-hidden="true"></i>
             </button>
         </td>

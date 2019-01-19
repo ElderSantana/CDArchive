@@ -159,6 +159,7 @@ export class CdListComponent implements OnInit {
     let genre = this.genreList.filter(
       item => item.id == id
     )
+    return genre[0].title
   }
 
 }

@@ -56,7 +56,7 @@
       
         <td>{{item.title}}</td>
         <th scope="row"><small>{{item.description}}</small></th>
-        <td>{{item.idGenre}}</td>
+        <td>{{ geGenre(item.idGenre)}}</td>
         <td>{{item.release | date}}</td>
         <td class="text-right">
             <button [disabled]="!item.cover" (click)="showCover(item)" type="button" ngbTooltip="View cover" class=" btn btn-info">

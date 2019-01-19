@@ -56,6 +56,7 @@ export class AddGenreModalComponent implements OnInit {
         this.loading = false;
         this.submitted = false;
         this.modalService.getModal('addGenre').close();
+        this.registerForm.reset();
         this.snackbar.open('Genre successfully created', ':)', {
           duration: 5000
         });
